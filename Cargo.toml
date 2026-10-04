@@ -1,0 +1,22 @@
+[package]
+name = "usbntfs"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Read-only NTFS for USB drives on Nintendo Switch homebrew, as a C static library"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+ntfs = { version = "0.4.0", default-features = false }
+binrw = { version = "0.11", default-features = false }
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+lto = true
+codegen-units = 1
